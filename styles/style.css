@@ -27,8 +27,8 @@ body {
     align-items: center;
     text-align: center;
     gap: 20px;
-    /* Degradado lineal de abajo a arriba */
-    background: linear-gradient(to top, #111, #333);
+    /* Degradado lineal de arriba a abajo */
+    background: linear-gradient(to bottom, #c17dc0, #6dc6e4);
     color: #fff;
     border-radius: 10px;
     /* Sombreado con 0.5 de opacidad */
@@ -60,17 +60,19 @@ body {
 }
 .amount-wrapper button {
     flex: 1;
-    background-color: #9c359a;
+    background-color: transparent;
     color: #fff;
     font-weight: 600;
-    border: none;
+    border: 3px solid #fff;
     padding: 15px;
     border-radius: 10px;
     cursor: pointer;
     transition: all 0.2s ease;
 }
 .amount-wrapper button:hover {
-    background-color: #4774b3;
+    border: 3px solid #c17dc0;
+    background-color: #c17dc0;
+    color: #fff;
 }
 
 /* ACTION BUTTONS */
@@ -90,7 +92,7 @@ body {
     transition: all 0.2s ease;
 }
 .action-buttons button:hover {
-    background-color: #9c359a;
+    background-color: #c17dc0;
     color: #fff;
 }
 
@@ -140,6 +142,6 @@ body {
     transition: all 0.2s ease;
 }
 .logout button:hover {
-    background-color: #762ac2;
+    background-color: #9c359a;
     color: #fff;
 }
