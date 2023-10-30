@@ -13,11 +13,19 @@
     <div class="container">
         <h1>Cajero Automático</h1>
 
-        <button id="deposit-button">Depositar Dinero</button>
-        <button id="withdraw-button">Retirar Dinero</button>
-        <button id="transfer-button">Transferir Dinero</button>
-        <button id="change-password-button">Cambiar Contraseña</button>
-        <button id="logout-button">Salir</button>
+        <div id="amount-wrapper" class="amount-wrapper hidden">
+            <input id="amount-input" type="number" placeholder="Cantidad">
+            <button id="amount-button"></button>
+        </div>
+        <input id="account-input" class="hidden" type="text" placeholder="IBAN de la cuenta">
+
+        <div class="action-buttons">
+            <button id="deposit-button">Depositar Dinero</button>
+            <button id="withdraw-button">Retirar Dinero</button>
+            <button id="transfer-button">Transferir Dinero</button>
+            <button id="change-password-button">Cambiar Contraseña</button>
+            <button id="logout-button">Salir</button>
+        </div>
 
         <p>Su saldo actual es: <span id="balance"></span>€</p>
     </div>
