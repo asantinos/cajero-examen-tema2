@@ -11,6 +11,7 @@ const amountBtn = document.getElementById("amount-button");
 const accountInput = document.getElementById("account-input");
 
 let balance = 1000;
+// Lo declaramos con let el PIN para poder modificarlo con una función
 let CORRECT_PIN = "1234";
 let pinTries = 3;
 // let regularExpresion = "/^(ES\d{22}$/";
@@ -24,6 +25,7 @@ const deposit = () => {
         alert(`Depositados ${depositAmount}€ con éxito.`);
         showBalance();
 
+        // Vaciamos el input una vez ingresada la cantidad correctamente
         amountInput.value = "";
     } else {
         alert("Cantidad no válida.");
@@ -43,6 +45,7 @@ const withdraw = () => {
         alert(`Retirados ${withdrawAmount}€ con éxito.`);
         showBalance();
 
+        // Vaciamos el input una vez retirada la cantidad correctamente
         amountInput.value = "";
     } else {
         alert("Cantidad no válida.");
@@ -57,13 +60,15 @@ const transfer = () => {
         transferAccount !== "" &&
         !isNaN(transferAmount) &&
         transferAmount > 0 &&
-        transferAmount <= balance
+        transferAmount <= balance &&
+        validateIBAN(transferAccount)
     ) {
         balance -= transferAmount;
 
         alert(`Tranferidos ${transferAmount}€ a la cuenta ${transferAccount}`);
         showBalance();
 
+        // Vaciamos ambos input una vez ingresada la cantidad y cuenta correctamente
         amountInput.value = "";
         accountInput.value = "";
     } else {
@@ -72,10 +77,12 @@ const transfer = () => {
 };
 
 const changePass = () => {
+    // Pedimos el PIN antiguo
     const pin = prompt("Ingrese su PIN actual");
 
     if (pin === CORRECT_PIN) {
         const newPIN = prompt("Ingrese su nuevo PIN");
+        // Igualamos el nuevo PIN escrito al CORRECT_PIN
         CORRECT_PIN = newPIN;
 
         alert(`Su nuevo PIN es: ${CORRECT_PIN}`);
@@ -88,6 +95,7 @@ const changePass = () => {
 
 const logout = () => {
     alert("Gracias por utilizar el cajero. Hasta luego.");
+    // Redireccionamos a la página de despedida
     document.location.href = "templates/logout.html";
 };
 
@@ -106,6 +114,7 @@ const login = () => {
         alert(
             `PIN incorrecto. Ya no le quedan intentos. El cajero se ha bloqueado.`
         );
+        // Si falla 3 veces el PIN, lo redireccionamos a una página de bloqueo de cajero
         document.location.href = "templates/block.html";
     }
 };
@@ -114,6 +123,13 @@ const showBalance = () => {
     balanceText.innerText = balance;
 };
 
+const validateIBAN = (account) => {
+    let regularExpression = /^(ES\d{22})$/;
+
+    return regularExpression.test(account);
+};
+
+// Mostramos input de cantidad y/o número de cuenta según el botón pulsado
 depositBtn.addEventListener("click", () => {
     amountBtn.innerText = "Depositar";
     amountWrapper.classList.remove("hidden");
@@ -132,6 +148,7 @@ transferBtn.addEventListener("click", () => {
 changePassBtn.addEventListener("click", changePass);
 logoutBtn.addEventListener("click", logout);
 
+// Según el texto del botón, ejecutaremos una función u otra
 amountBtn.addEventListener("click", () => {
     if (amountBtn.innerText === "Depositar") {
         deposit();
@@ -142,5 +159,5 @@ amountBtn.addEventListener("click", () => {
     }
 });
 
+// Llamamos al login al entrar a la página
 login();
-showBalance();
