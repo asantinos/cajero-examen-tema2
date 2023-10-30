@@ -15,9 +15,9 @@
 
         <div id="amount-wrapper" class="amount-wrapper hidden">
             <input id="amount-input" type="number" placeholder="Cantidad">
+            <input id="account-input" class="hidden" type="text" placeholder="IBAN de la cuenta">
             <button id="amount-button"></button>
         </div>
-        <input id="account-input" class="hidden" type="text" placeholder="IBAN de la cuenta">
 
         <div class="action-buttons">
             <button id="deposit-button">Depositar Dinero</button>
@@ -27,7 +27,7 @@
             <button id="logout-button">Salir</button>
         </div>
 
-        <p>Su saldo actual es: <span id="balance"></span>€</p>
+        <p class="balance-text">Su saldo actual es: <span id="balance"></span>€</p>
     </div>
 
     <script src="scripts/main.js"></script>

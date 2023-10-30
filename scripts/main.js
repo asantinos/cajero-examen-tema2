@@ -58,7 +58,6 @@ const transfer = () => {
     const transferAccount = accountInput.value;
 
     if (
-        transferAccount !== "" &&
         !isNaN(transferAmount) &&
         transferAmount > 0 &&
         transferAmount <= balance &&
