@@ -3,6 +3,7 @@ const withdrawBtn = document.getElementById("withdraw-button");
 const transferBtn = document.getElementById("transfer-button");
 const changePassBtn = document.getElementById("change-password-button");
 const logoutBtn = document.getElementById("logout-button");
+const loginBtn = document.getElementById("login-button");
 const balanceText = document.getElementById("balance");
 
 const amountWrapper = document.getElementById("amount-wrapper");
