@@ -1,3 +1,9 @@
+/**
+ * Author: Alejandro Santos Garcia
+ *
+ * Github Repository: https://github.com/asantinos/cajero-examen-tema2
+ */
+
 const depositBtn = document.getElementById("deposit-button");
 const withdrawBtn = document.getElementById("withdraw-button");
 const transferBtn = document.getElementById("transfer-button");
@@ -156,6 +162,31 @@ amountBtn.addEventListener("click", () => {
         withdraw();
     } else if (amountBtn.innerText === "Transferir") {
         transfer();
+    }
+});
+
+// Asignamos la tecla enter, para que al ser presionada realice la función correspondiente
+amountInput.addEventListener("keypress", function (event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+
+        if (amountBtn.innerText === "Depositar") {
+            deposit();
+        } else if (amountBtn.innerText === "Retirar") {
+            withdraw();
+        } else if (amountBtn.innerText === "Transferir") {
+            transfer();
+        }
+    }
+});
+
+accountInput.addEventListener("keypress", function (event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+
+        if (amountBtn.innerText === "Transferir") {
+            transfer();
+        }
     }
 });
 
