@@ -49,17 +49,39 @@ const transfer = () => {
     }
 };
 
-const changePass = () => {};
+const changePass = () => {
+    const pin = prompt("Ingrese su PIN");
+
+    if (pin === CORRECT_PIN) {
+        const newPIN = prompt("Ingrese su nuevo PIN");
+        CORRECT_PIN = newPIN;
+
+        alert(`Su nuevo PIN es ${CORRECT_PIN}`);
+    } else {
+        console.log("PIN incorrect");
+    }
+};
 
 const logout = () => {
     document.location.href = "templates/logout.html";
 };
 
 const login = () => {
-   
+    let pin = prompt("Ingrese su PIN");
+
+    while (pin !== CORRECT_PIN && pinTries > 1) {
+        pinTries--;
+        alert(`PIN incorrecto. Le quedan ${pinTries} intentos.`);
+        pin = prompt("Ingrese su PIN");
+    }
+
+    if (pin !== CORRECT_PIN) {
+        document.location.href = "templates/block.html";
+    }
 };
+
 const showBalance = () => {
-    balanceText.innerText = balance;
+    balanceText.innerText = balance.toFixed(2);
 };
 
 depositBtn.addEventListener("click", deposit);
@@ -68,5 +90,5 @@ transferBtn.addEventListener("click", transfer);
 changePassBtn.addEventListener("click", changePass);
 logoutBtn.addEventListener("click", logout);
 
-// login();
+login();
 showBalance();
